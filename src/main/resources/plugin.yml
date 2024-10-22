@@ -1,0 +1,9 @@
+name: BluemapClaims
+version: '1.0-SNAPSHOT'
+main: me.lebogo.bluemapclaims.BluemapClaims
+api-version: '1.21'
+depend: [ BlueMap, GriefPrevention ]
+prefix: BlueMapClaims
+authors: [ LeBogo ]
+description: Thow the Griefprevention claims of your players on your Bluemap!
+website: https://lebogo.me

@@ -1,0 +1,5 @@
+# Interval in seconds to update the claims on the map
+updateInterval: 300 # 5 minutes
+
+# Logs some debug information to the console on ever map update
+enableUpdateLogs: false
