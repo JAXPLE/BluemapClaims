@@ -72,7 +72,7 @@ public final class BluemapClaims extends JavaPlugin {
             claimsInWorld.add(claim);
         }
 
-        for (String worldName : claimsByWorld.keySet()) {
+        for (String worldName : blueMapWorlds.keySet()) {
             BlueMapWorld blueMapWorld = blueMapWorlds.get(worldName);
             Collection<BlueMapMap> maps = blueMapWorld.getMaps();
 
