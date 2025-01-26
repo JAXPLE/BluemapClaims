@@ -80,28 +80,30 @@ public final class BluemapClaims extends JavaPlugin {
                     .label("Claims")
                     .build();
 
-            for (Claim claim : claimsByWorld.get(worldName)) {
-                int lowestY = -64;
-                int highestY = 320;
+            if(claimsByWorld.get(worldName) != null) {
+                for (Claim claim : claimsByWorld.get(worldName)) {
+                    int lowestY = -64;
+                    int highestY = 320;
 
-                Color outlineColor = getColorFromName(claim.getOwnerName());
-                Color mainColor = new Color((int) (outlineColor.getRed() * 0.9), (int) (outlineColor.getGreen() * 0.9), (int) (outlineColor.getBlue() * 0.9), 0.2f);
+                    Color outlineColor = getColorFromName(claim.getOwnerName());
+                    Color mainColor = new Color((int) (outlineColor.getRed() * 0.9), (int) (outlineColor.getGreen() * 0.9), (int) (outlineColor.getBlue() * 0.9), 0.2f);
 
-                Marker claimMarker = ExtrudeMarker.builder()
-                        .fillColor(mainColor)
-                        .lineColor(outlineColor)
-                        .lineWidth(2)
-                        .shape(new Shape.Builder()
-                                .addPoint(new Vector2d(claim.getLesserBoundaryCorner().getX(), claim.getLesserBoundaryCorner().getZ()))
-                                .addPoint(new Vector2d(claim.getLesserBoundaryCorner().getX(), claim.getGreaterBoundaryCorner().getZ() + 1))
-                                .addPoint(new Vector2d(claim.getGreaterBoundaryCorner().getX() + 1, claim.getGreaterBoundaryCorner().getZ() + 1))
-                                .addPoint(new Vector2d(claim.getGreaterBoundaryCorner().getX() + 1, claim.getLesserBoundaryCorner().getZ()))
-                                .build(), (float) lowestY, (float) highestY)
-                        .label(claim.getOwnerName() + "'s claim")
-                        .build();
+                    Marker claimMarker = ExtrudeMarker.builder()
+                            .fillColor(mainColor)
+                            .lineColor(outlineColor)
+                            .lineWidth(2)
+                            .shape(new Shape.Builder()
+                                    .addPoint(new Vector2d(claim.getLesserBoundaryCorner().getX(), claim.getLesserBoundaryCorner().getZ()))
+                                    .addPoint(new Vector2d(claim.getLesserBoundaryCorner().getX(), claim.getGreaterBoundaryCorner().getZ() + 1))
+                                    .addPoint(new Vector2d(claim.getGreaterBoundaryCorner().getX() + 1, claim.getGreaterBoundaryCorner().getZ() + 1))
+                                    .addPoint(new Vector2d(claim.getGreaterBoundaryCorner().getX() + 1, claim.getLesserBoundaryCorner().getZ()))
+                                    .build(), (float) lowestY, (float) highestY)
+                            .label(claim.getOwnerName() + "'s claim")
+                            .build();
 
 
-                claimsMarkerSet.put(claim.getID().toString(), claimMarker);
+                    claimsMarkerSet.put(claim.getID().toString(), claimMarker);
+                }
             }
 
             for (BlueMapMap map : maps) {
